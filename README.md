@@ -7,11 +7,11 @@
     - Gene synteny is conserved
     - Genes start with ATG and stop with TAG
     - 10 bps between every gene (see future additions)
-    - Genome starts and ends with 10 bps of space before/after genes
+    - Genome starts and ends with 10 additional basepairs before/after genes
     - Pangenome Gene classes randomly distributed Core or Accessory.
     - Creates draft genomes choosing n contigs from gaussian mu=10,sigma=5.
     - Contigs number stdev = average contigs / 2
-    - creats 15% * source genes additional auxiliary genes.
+    - creates 15% * source genes additional auxiliary genes.
     - shuffles auxillary genome choosing shared fraction from gaussion
       where mu=y=0.02(ANI)-1.05 and sigma=0.02
 
@@ -24,6 +24,14 @@ Writes histogram PDF of RBM distribution for each simulated genome to source gen
 Needs Python version 3.9+ for random.sample counts parameter.
 
 The random.seed is set at 42 for reproducibility
+
+```bash
+# print the help file and parameter list
+python Simulate_population_genomes.py -h
+
+# run with default settings
+python Simulate_population_genomes.py -o my_simulated_genomes
+```
 
 # future additions
     - operons - sizes are randomly sampled from gaussian mu=10genes, std=5

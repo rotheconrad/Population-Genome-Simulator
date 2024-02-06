@@ -15,7 +15,7 @@
     - Pangenome Gene classes randomly distributed (Core or Accessory.
     - Creates draft genomes choosing n contigs from gaussian mu=10,sigma=5.
     - Contigs number stdev = average contigs / 2
-    - creats 15% * source genes additional auxiliary genes.
+    - creates 15% * source genes additional auxiliary genes.
     - shuffles auxillary genome choosing shared fraction from gaussion
       where mu=y=0.02(ANI)-1.05 and sigma=0.02
 
