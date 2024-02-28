@@ -96,6 +96,9 @@ def generate_source(gnum, pandist, tgenomes, mu_gene, stdev_gene):
     classes = ['Conserved', 'Core', 'Accessory']
     pancats = random.sample(classes, k = gnum, counts = pandist)
 
+    # set average gene length
+    avg_gene_len = mu_gene - 6 # remove 6 bp for ATG and TAG
+
     # generate 10 bp end caps
     for i in range(2):
         cap = ''.join(random.choice('CGTA') for _ in range(10))
@@ -108,7 +111,6 @@ def generate_source(gnum, pandist, tgenomes, mu_gene, stdev_gene):
         # generate gene length
         # start sequence ATG stop sequence TAG
         # random sample gene length avg gene length 1000 w/ stdev 250
-        avg_gene_len = mu_gene - 6 # remove 6 bp for ATG and TAG 
         gl = int(random.gauss(avg_gene_len, stdev_gene))
         # implement minimum gene length 300 bp - ATG - TAG
         while gl < 294:
@@ -130,7 +132,7 @@ def generate_source(gnum, pandist, tgenomes, mu_gene, stdev_gene):
     # get the number of accessory genes.
     accs = [i for i in pancats if i == 'Accessory']
     for i in range(len(accs)):
-        gl = int(random.gauss(994, 250))
+        gl = int(random.gauss(avg_gene_len, stdev_gene))
         # generate random gene sequence
         rnd = ''.join(random.choice('CGTA') for _ in range(gl))
         gnseq = "ATG" + rnd + "TAG" # gene sequence
@@ -514,7 +516,7 @@ def main():
     # set the random seed
     #random.seed(args['random_seed'])
 
-    # createout put directories
+    # create output directories
     # get outpre path
     p = outpre.split('/')
     if len(p) > 1:

@@ -1,5 +1,9 @@
 # Generates genomes around ani values based on gene RBMs along ANI gradient
 
+Step 1: randomly generate a source genome with a user specified number of genes of length mu with a standard deviation. Default is 3000 genes of length mu=1000 and stdev=250. So gene lengths are randomly chosen from a normal distribution. Then add ATG and TAG to the beginning and end of each gene, and add 10bps (random sequence) between each gene plus 10bps to the beginning and end. Designate 85% of the genes as core genes and 15% as accessory. Randomly generate additional pool of accessory genes that can be randomly distributed across the population.
+
+Step 2: use the input ANI range (default 95-100) with a step size (default 0.1) and generate gamma distributions with a mean matching the ANI target. For each new genome simulation, generate new random RBM gene distribution from the ANI matched gamma distribution then add random point mutations to the RBM gene in the source genome to create the new genome. Lastly, shuffle random fraction of accessory genes.
+
     - uses a gamma distribution to model RBM gene distribution around ANI
     - Genome evolution is neutral random based on RBM distriubtion.
     - Average gene length and stdev (default 1000 bp, 250 stdev)
